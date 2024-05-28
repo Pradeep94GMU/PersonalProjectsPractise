@@ -10,9 +10,11 @@ public class App {
 
       Reminder playCricket = new Reminder(101, "Play Cricket", LocalDateTime.of(2024,05,12, 12,10 ));
       Reminder sleepNote = new Reminder(102, "Sleep for 3 hours", LocalDateTime.of(2024,12,8, 12,30 ));
+      Reminder demo = new Reminder(-20, "Sleep for 3 hours", LocalDateTime.of(2024,12,8, 12,30 ));
 
       reminder.addReminder(playCricket);
       reminder.addReminder(sleepNote);
+      reminder.addReminder(demo);
 
       System.out.println("All Notes: ");
       reminder.showList();

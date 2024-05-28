@@ -27,6 +27,11 @@ public class Reminder {
   //method, jisme addReminder kar saku with the help of Reminder Object
 
   public void addReminder(Reminder reminder){
+    if(reminder.id <= 0 )
+    {
+      System.out.println("Not possible to set reminder for this id");
+      return;
+    }
     reminderList.add(reminder);
     System.out.println("Added one reminder successfully: "+ reminder.getNote());
 
