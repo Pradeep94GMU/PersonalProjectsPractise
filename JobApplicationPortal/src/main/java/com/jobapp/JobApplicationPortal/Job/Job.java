@@ -1,13 +1,27 @@
 package com.jobapp.JobApplicationPortal.Job;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.jobapp.JobApplicationPortal.Company.Company;
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Job")
 public class Job {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;
     private int minSalary;
     private int maxSalary;
     private String location;
+
+    @ManyToOne
+    private Company company;
+
+    public Job() {
+    }
 
     public Job(Long id, String title, String description, int minSalary, int maxSalary, String location) {
         this.id = id;
@@ -16,6 +30,14 @@ public class Job {
         this.minSalary = minSalary;
         this.maxSalary = maxSalary;
         this.location = location;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     public Long getId() {
