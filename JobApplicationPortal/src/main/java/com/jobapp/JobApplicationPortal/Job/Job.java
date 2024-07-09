@@ -1,5 +1,6 @@
 package com.jobapp.JobApplicationPortal.Job;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jobapp.JobApplicationPortal.Company.Company;
 import jakarta.persistence.*;
@@ -18,6 +19,8 @@ public class Job {
     private String location;
 
     @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "company_id")
     private Company company;
 
     public Job() {

@@ -1,10 +1,9 @@
-package com.jobapp.JobApplicationPortal.Company;
+package com.jobapp.JobApplicationPortal.Review;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CompanyRepo extends JpaRepository<Company, Long> {
-
+public interface ReviewRepo extends JpaRepository<Review, Long> {
 
 }

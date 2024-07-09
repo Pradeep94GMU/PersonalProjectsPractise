@@ -1,5 +1,6 @@
 package com.jobapp.JobApplicationPortal.Company;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import java.util.List;
 @Service
 public class CompanyServImpl implements CompanyService{
 
+    @Autowired
     CompanyRepo companyRepo;
 
     //depended on repo, now we can access all the methods
@@ -19,8 +21,6 @@ public class CompanyServImpl implements CompanyService{
     @Override
     public List<Company> getAllCompanies() {
         List<Company> companyList = companyRepo.findAll();
-        System.out.println(companyList.toString());
-
         return companyList;
 
     }

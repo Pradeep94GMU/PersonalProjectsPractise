@@ -1,7 +1,9 @@
 package com.jobapp.JobApplicationPortal.Company;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.jobapp.JobApplicationPortal.Job.Job;
+import com.jobapp.JobApplicationPortal.Review.Review;
 import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
 
@@ -26,13 +28,16 @@ public class Company {
     private String description;
 
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "company")
+
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Job> jobList;
 
     //review
-    //@OneToMany
-    //private List<Review> reviewList
+
+    @OneToMany(mappedBy = "company")
+    @JsonManagedReference
+    private List<Review> reviewList;
 
     public Company() {
     }
@@ -48,6 +53,15 @@ public class Company {
         this.jobList = jobList;
     }
 
+
+
+    public List<Review> getReviewList() {
+        return reviewList;
+    }
+
+    public void setReviewList(List<Review> reviewList) {
+        this.reviewList = reviewList;
+    }
 
     public Long getId() {
         return id;
