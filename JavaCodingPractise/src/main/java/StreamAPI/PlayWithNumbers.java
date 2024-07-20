@@ -14,6 +14,10 @@ public class PlayWithNumbers {
 
 
 
+
+
+
+
         //find which number has max repeated times == freq map == groupingBy
 
         Map<Integer, Long> res = list.stream().collect(Collectors.groupingBy( Function.identity(), Collectors.counting()));

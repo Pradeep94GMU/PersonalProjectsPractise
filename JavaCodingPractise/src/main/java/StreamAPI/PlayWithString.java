@@ -2,6 +2,8 @@ package StreamAPI;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class PlayWithString {
 
@@ -9,6 +11,21 @@ public class PlayWithString {
         List<String> list = Arrays.asList("Hello", "World", "Pradeep", "Rahul", "Hi", "New");
 
 
+
+
+        List<String> res = IntStream.range(0, list.size()).mapToObj(index -> list.get(list.size() - 1 - index))
+                .collect(Collectors.toList());
+
+        System.out.println(res);
+
+
+
+
+        //print the sorted string
+        List<String> collect1 = list.stream()
+                .sorted((a, b) -> a.length() - b.length()).collect(Collectors.toList());
+
+        //System.out.println(collect1);
 
 
 
@@ -26,7 +43,7 @@ public class PlayWithString {
         List<String> collect = list.stream()
                 .sorted(Comparator.comparing(str->str.length())).collect(Collectors.toList());
 
-        System.out.println(collect);
+        //System.out.println(collect);
 
     }
 

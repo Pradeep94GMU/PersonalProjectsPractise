@@ -1,9 +1,6 @@
 package StreamAPI;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -92,6 +89,21 @@ public class Employee {
 
         List<Employee> list= Arrays.asList(emp1, emp2, emp3, emp4);
 
+        Map<Integer,Employee > empMap = new HashMap<>();
+        empMap.put(35, emp1);
+        empMap.put(40, emp2);
+        empMap.put(45, emp3);
+
+        System.out.println(empMap);
+
+        List<String> res = empMap.entrySet().stream()
+                .map(entry -> entry.getValue()).collect(Collectors.toList())
+                .stream().map(emp-> emp.getName() + " "+emp.getAge())
+                .collect(Collectors.toList());
+
+        System.out.println(res);
+
+
 
         //find the max salary emp
 
@@ -99,8 +111,8 @@ public class Employee {
         //       .sorted(Comparator.comparing(Employee::getName).reverse()).forEach(System.out::println);
 
 
-        list.stream()
-                .sorted((e1, e2)-> e2.getSalary() - e1.getSalary()).forEach(System.out::println);
+        //list.stream()
+        //        .sorted((e1, e2)-> e2.getSalary() - e1.getSalary()).forEach(System.out::println);
 
         //reverse
         //System.out.println(employee);
@@ -125,7 +137,7 @@ public class Employee {
                 .sorted(Comparator.comparing(Employee::getSalary).reversed()).findFirst().get();
 
         //System.out.println(collect);
-        System.out.println(employee.getName());
+        //System.out.println(employee.getName());
 
 
 
