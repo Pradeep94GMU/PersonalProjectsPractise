@@ -117,6 +117,12 @@ public class EmployeeSet2 {
         List<String> res5 = list.stream().map(emp-> emp.getName()).collect(Collectors.toList());
         System.out.println(res5);
 
+//        Find the employee with the highest salary.
+//        Find the employee with the lowest salary.
+//        Sort employees by their salary in ascending order.
+//        Sort employees by their name in alphabetical order.
+//        Group employees by department.
+
 
 
 
