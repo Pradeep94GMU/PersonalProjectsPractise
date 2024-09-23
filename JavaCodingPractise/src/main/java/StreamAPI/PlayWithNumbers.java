@@ -10,7 +10,21 @@ public class PlayWithNumbers {
 
     public static void main(String[] args) {
 
-        List<Integer> list = Arrays.asList(1,-2,-3,4,-5,6,-7,3,2,2,2,4,4,4,2);
+        List<Integer> list = Arrays.asList(1,2,3,1,5,2,8);
+        System.out.println("he");
+
+        int sum = list.stream().mapToInt(e -> e).sum();
+        System.out.println(sum);
+
+
+        //find duplicates
+
+//        Map<Integer, Long> freq2 = list.stream()
+//                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+//
+//        freq2.entrySet().stream()
+//                .filter(entry-> entry.getValue() > 1)
+//                .forEach(entry -> System.out.println(entry.getKey()));
 
 
 
@@ -20,11 +34,11 @@ public class PlayWithNumbers {
 
         //find which number has max repeated times == freq map == groupingBy
 
-        Map<Integer, Long> res = list.stream().collect(Collectors.groupingBy( Function.identity(), Collectors.counting()));
-        System.out.println(res);
-        Map.Entry<Integer, Long> ress = res.entrySet().stream().max(Map.Entry.comparingByValue()).orElseThrow();
+       // Map<Integer, Long> res = list.stream().collect(Collectors.groupingBy( Function.identity(), Collectors.counting()));
+        //System.out.println(res);
+       // Map.Entry<Integer, Long> ress = res.entrySet().stream().max(Map.Entry.comparingByValue()).orElseThrow();
 
-        System.out.println(ress);
+        //System.out.println(ress);
 
 //        list.stream().limit(100).forEach(System.out::println);
 //

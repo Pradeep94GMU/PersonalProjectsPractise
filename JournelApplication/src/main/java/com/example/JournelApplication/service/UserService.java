@@ -1,7 +1,9 @@
 package com.example.JournelApplication.service;
 
 import com.example.JournelApplication.entity.Journel;
+import com.example.JournelApplication.entity.User;
 import com.example.JournelApplication.repo.JournelRepo;
+import com.example.JournelApplication.repo.UserRepo;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,36 +12,42 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class JournelService {
+public class UserService {
 
     @Autowired
-    private JournelRepo journelRepo;
+    private UserRepo userRepo;
 
-    public void createJournel(Journel journel){
-        journelRepo.save(journel);
-
-    }
-
-
-    public List<Journel> getAll(){
-        return journelRepo.findAll();
-    }
-
-    public Optional<Journel> getById(ObjectId id){
-
-        return journelRepo.findById(id);
+    public void createUser(User user){
+        userRepo.save(user);
 
     }
 
-    public boolean deleteJournelbyId(ObjectId id){
 
-        journelRepo.deleteById(id);
+    public List<User> getAll(){
+        return userRepo.findAll();
+    }
+
+    public Optional<User> getById(ObjectId id){
+
+        return userRepo.findById(id);
+
+    }
+
+    public boolean deleteUserby(ObjectId id){
+
+        userRepo.deleteById(id);
         return true;
     }
 
-    public void updateJournelById(ObjectId id, Journel journel){
+    public void updateUserById(ObjectId id, User user){
+
+        userRepo.save(user);
 
 
+    }
+
+    public User findByUserName(String username){
+        return userRepo.findByUserName(username);
     }
 
 

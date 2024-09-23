@@ -7,6 +7,13 @@
   <version>1.0-SNAPSHOT</version>
   <name>SecurityMav Maven Webapp</name>
   <url>http://maven.apache.org</url>
+
+  <properties>
+    <spring.version>6.1.0</spring.version>
+  </properties>
+
+
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -14,6 +21,17 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>6.1.8</version>
+    </dependency>
+
+
+
+
+
   </dependencies>
   <build>
     <finalName>SecurityMav</finalName>

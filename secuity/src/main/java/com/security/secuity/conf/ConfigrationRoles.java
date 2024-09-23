@@ -20,12 +20,15 @@ public class ConfigrationRoles  {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
         httpSecurity
+                //we need to specify the authorization rules
                 .authorizeRequests()
                 .requestMatchers("/public").permitAll()
                 .requestMatchers("/authUser").hasRole("USER")
                 .requestMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().authenticated()
-                .and().formLogin();
+                //use and to chaining the multiple conf block
+                .and()
+                .formLogin();
 
 
 

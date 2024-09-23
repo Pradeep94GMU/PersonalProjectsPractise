@@ -1,7 +1,9 @@
 package com.example.JournelApplication.controller;
 
 import com.example.JournelApplication.entity.Journel;
+import com.example.JournelApplication.entity.User;
 import com.example.JournelApplication.service.JournelService;
+import com.example.JournelApplication.service.UserService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,83 +11,55 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/journel")
-public class JournelControllerV2 {
+@RequestMapping("/users")
+public class UserControllerV2 {
 
     @Autowired
-    private JournelService journelService;
+    private UserService userService;
 
-
+    //Get all the users
     @GetMapping
-    public ResponseEntity<List<Journel>> getAll() {
-        List<Journel> listOfJournel = journelService.getAll();
-        return new ResponseEntity<>(listOfJournel, HttpStatus.OK);
+    public List<User> getAllUsers(){
+        return userService.getAll();
     }
 
-
+    //create a user
     @PostMapping
-    public ResponseEntity<Journel> createJournel(@RequestBody Journel journel) {
-
-        LocalDateTime now = LocalDateTime.now();
-        journel.setDate(now);
-        journelService.createJournel(journel);
-
-        return new ResponseEntity<>(journel, HttpStatus.BAD_REQUEST);
+    public void createUser(@RequestBody User user){
+        userService.createUser(user);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Journel> getJournelById(@PathVariable ObjectId id) {
-        Optional<Journel> journeyEntry = journelService.getById(id);
-
-        if(journeyEntry.isPresent()){
-            //not null, we have some entry of journel
-            return new ResponseEntity<>(journeyEntry.get(), HttpStatus.OK);
-        }
-        else{
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Optional<Journel>> deleteEntryById(@PathVariable ObjectId id) {
-        boolean deleted = journelService.deleteJournelbyId(id);
-        Optional<Journel> OldData = journelService.getById(id);
-        if(deleted){
-            return new ResponseEntity<>(OldData, HttpStatus.OK);
-        }
-        else{
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    @GetMapping("/{username}")
+    public ResponseEntity<User> getUserByName(@PathVariable String username){
+        User user = userService.findByUserName(username);
+        return new ResponseEntity<>(user, HttpStatus.OK);
 
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Journel> updateJournelByID(@PathVariable ObjectId id, @RequestBody Journel newjournel) {
-        //we are getting id
-        //we need to find that id
-        Journel old = journelService.getById(id).orElse(null);
 
-        if(old != null){
-            old.setContent(newjournel.getContent() != null && !newjournel.getContent().equals("") ? newjournel.getContent(): old.getContent());
-            old.setTitle(newjournel.getTitle() != null && !newjournel.getTitle().equals("") ? newjournel.getTitle() : old.getTitle());
-            journelService.createJournel(old);
-            return new ResponseEntity<>(old, HttpStatus.OK);
+    //to update the credential
+    @PutMapping("{username}")
+    public ResponseEntity<User> updateUserById(@RequestBody User user, @PathVariable String username){
 
-        }
-        else{
-            //not in db to updaate
-            return new ResponseEntity<>( HttpStatus.NOT_FOUND);
+        User byUserName = userService.findByUserName(username);
+
+        if(byUserName != null){
+            byUserName.setPassword(user.getPassword());
+            byUserName.setUserName(user.getUserName());
+            userService.createUser(byUserName);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
 
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
 
     }
+
+
 
 
 

@@ -1,0 +1,22 @@
+2024-06-15 17:09:18,076 INFO o.a.j.u.JMeterUtils: Setting Locale to en_US
+2024-06-15 17:09:18,114 INFO o.a.j.JMeter: Loading user properties from: user.properties
+2024-06-15 17:09:18,114 INFO o.a.j.JMeter: Loading system properties from: system.properties
+2024-06-15 17:09:18,124 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2024-06-15 17:09:18,124 INFO o.a.j.JMeter: Version 5.6.3
+2024-06-15 17:09:18,124 INFO o.a.j.JMeter: java.version=20.0.1
+2024-06-15 17:09:18,125 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+2024-06-15 17:09:18,125 INFO o.a.j.JMeter: os.name=Mac OS X
+2024-06-15 17:09:18,125 INFO o.a.j.JMeter: os.arch=x86_64
+2024-06-15 17:09:18,125 INFO o.a.j.JMeter: os.version=12.5
+2024-06-15 17:09:18,125 INFO o.a.j.JMeter: file.encoding=UTF-8
+2024-06-15 17:09:18,125 INFO o.a.j.JMeter: java.awt.headless=null
+2024-06-15 17:09:18,126 INFO o.a.j.JMeter: Max memory     =4294967296
+2024-06-15 17:09:18,126 INFO o.a.j.JMeter: Available Processors =8
+2024-06-15 17:09:18,136 INFO o.a.j.JMeter: Default Locale=English (United States)
+2024-06-15 17:09:18,147 INFO o.a.j.JMeter: JMeter  Locale=English (United States)
+2024-06-15 17:09:18,147 INFO o.a.j.JMeter: JMeterHome=/Users/Pradeep/Movies/projects/apache-jmeter-5.6.3
+2024-06-15 17:09:18,147 INFO o.a.j.JMeter: user.dir  =/Users/Pradeep/Movies/projects/apache-jmeter-5.6.3/bin
+2024-06-15 17:09:18,148 INFO o.a.j.JMeter: PWD       =/Users/Pradeep/Movies/projects/apache-jmeter-5.6.3/bin
+2024-06-15 17:09:18,150 INFO o.a.j.JMeter: IP: 127.0.0.1 Name: Deepaks-MBP FullName: localhost
+2024-06-15 17:09:18,169 INFO o.a.j.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties
+2024-06-15 17:09:18,624 INFO o.a.j.JMeterGuiLauncher: Setting LAF to: laf:com.apple.laf.AquaLookAndFeel

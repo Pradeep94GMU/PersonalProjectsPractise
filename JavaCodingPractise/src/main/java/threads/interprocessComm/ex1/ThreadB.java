@@ -6,10 +6,17 @@ public class ThreadB extends Thread{
 
     @Override
      public void run(){
-        for(int i = 1; i <= 100; i++){
-            total += i;
+        synchronized (this){
+            System.out.println("Got the lock and performing the task..");
+            for(int i = 1; i <= 100; i++){
+                total += i;
+            }
+
+            this.notify();
+            System.out.println("sending the notification to caller thread to use the updated data..");
+
         }
-        //this.notify();
+
     }
 
 
