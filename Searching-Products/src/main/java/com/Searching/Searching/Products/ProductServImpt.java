@@ -61,4 +61,9 @@ public class ProductServImpt implements ProductService{
         // Save all products to the database
         prodRepo.saveAll(products);
     }
+
+    @Override
+    public List<Product> findProducts(String category, String department, Double price) {
+        return prodRepo.findByCategoryAndDepartmentAndPriceLessThan(category,department,price);
+    }
 }

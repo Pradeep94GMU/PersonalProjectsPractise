@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/users")
@@ -18,6 +19,13 @@ public class Controller {
     public Controller(UserService userService) {
         this.userService = userService;
     }
+
+
+    @GetMapping("/totalUsers")
+    public int totalUsers(){
+        return userService.findtotalusers();
+    }
+
 
     @GetMapping("/search")
     public ResponseEntity<List<Username>> getUsername(@RequestParam String name){
@@ -32,9 +40,13 @@ public class Controller {
     }
 
 
-    @PostMapping
-    public void createUsernames(){
-        userService.createUsernames();
+    @PostMapping("/createUsername")
+    public ResponseEntity<?> createUsernames(@RequestBody Map<String, Integer> request){
+        System.out.println(request);
+        int count = request.get("count");
+        int createdCount = userService.createUsernames(count);
+
+        return ResponseEntity.ok(Map.of("created", createdCount));
 
     }
 

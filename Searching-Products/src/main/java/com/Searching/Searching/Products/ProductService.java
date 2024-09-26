@@ -13,4 +13,6 @@ public interface ProductService {
 
     public void insertDummyData();
 
+    public List<Product> findProducts(String category, String department, Double price);
+
 }

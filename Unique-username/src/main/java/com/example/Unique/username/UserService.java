@@ -7,7 +7,10 @@ import java.util.List;
 @Service
 public interface UserService {
 
-    public void createUsernames();
+    public int createUsernames(int count);
 
     public List<Username> findUsername(String name);
+
+
+    int findtotalusers();
 }

@@ -18,16 +18,18 @@ public class UserSerImp implements UserService{
     }
 
     @Override
-    public void createUsernames() {
+    public int createUsernames(int count) {
 
         List<Username> usernames = new ArrayList<>();
 
-        for (int i = 0; i < 2000; i++) {
+        for (int i = 0; i < count; i++) {
             String randomUsername = generateRandomUsername();
             usernames.add(new Username(randomUsername));
         }
 
         userRepo.saveAll(usernames);
+
+        return usernames.size();
 
 
     }
@@ -35,6 +37,11 @@ public class UserSerImp implements UserService{
     @Override
     public List<Username> findUsername(String name) {
         return userRepo.findByNameContainingIgnoreCase(name);
+    }
+
+    @Override
+    public int findtotalusers() {
+        return userRepo.findTotalUsers();
     }
 
     private static final String[] FIRST_NAMES = {
